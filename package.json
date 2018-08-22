@@ -1,6 +1,6 @@
 {
   "name": "homebridge-dafang",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Homebridge Plugin for Xiaomi Dafang IP Camera",
   "main": "index.js",
   "preferGlobal": "true",
