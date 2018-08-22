@@ -1,0 +1,43 @@
+{
+  "name": "homebridge-dafang",
+  "version": "1.0.0",
+  "description": "Homebridge Plugin for Xiaomi Dafang IP Camera",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint .",
+    "ci": "npm install && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahilchaddha/homebridge-dafang.git"
+  },
+  "keywords": [
+    "homebridge",
+    "homebridge-plugin",
+    "xiaomi",
+    "xiaomi-dafang",
+    "dafang",
+    "ip-camera"
+  ],
+  "engines": {
+    "homebridge": ">=0.4.30"
+  },
+  "author": "Sahil Chaddha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahilchaddha/homebridge-dafang/issues"
+  },
+  "homepage": "https://github.com/sahilchaddha/homebridge-dafang#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  },
+  "dependencies": {
+    "babel-eslint": "^8.2.6",
+    "ip": "^1.1.5",
+    "mosca": "^2.8.3",
+    "mqtt": "^2.18.3"
+  }
+}
