@@ -40,16 +40,16 @@ This library supports hosting MQTT Broker as well as connecting to existing Brok
 
 ## Accessories : 
 
-| Accessory             | Type | Description                                           | Config |
-|--------------------|---------|-------------------------------------------------------|----------| ----- |
-| Motion Sensor      | `motionSensor` | Alerts if Motion is Detected         | threshold(optional) => In ms.        |
-| Night Vision Sensor           | `nightVisionSensor` | Alerts if Night Mode is Detected                          | threshold(optional) => In ms.      |
-| Night Vision Switch               | `nightVisionSwitch` | Toggles Night Mode on Camera => IR_LED ON IR_CUT OFF                                 | None       |
-| Automatic Night Mode Toggle Switch           | `autoNightVisionSwitch` | Toggles Automatic Night Mode on Camera | None      |
-| Automatic Motion Tracking Switch         | `autoMotionTrackingSwitch` | Toggles Automatic Motion Tracking on Dafang                                  | None      |
-| Move/Rotate Camera Motor         | `moveCamera` | Moves Dafang Camera Horizontal/Vertical right/left up/down Motor                                  | axis(required) => horizontal/vertical, direction(required) => left/right for horizontal and up/down for vertical      |
+| Accessory                          | Type                | Description                                           | Config |
+|------------------------------------|---------------------|-------------------------------------------------------|--------|
+| Motion Sensor                      | `motionSensor`      | Alerts if Motion is Detected                          | `threshold(optional) => In ms.`|
+| Night Vision Sensor                | `nightVisionSensor` | Alerts if Night Mode is Detected                      | `threshold(optional) => In ms.`|
+| Night Vision Switch                | `nightVisionSwitch` | Toggles Night Mode on Camera => IR_LED ON IR_CUT OFF  | None   |
+| Automatic Night Mode Toggle Switch | `autoNightVisionSwitch` | Toggles Automatic Night Mode on Camera | None     |
+| Automatic Motion Tracking Switch   | `autoMotionTrackingSwitch` | Toggles Automatic Motion Tracking on Dafang    | None  |
+| Move/Rotate Camera Motor           | `moveCamera`              | Moves Dafang Camera Horizontal/Vertical right/left up/down Motor| `axis(required) => horizontal/vertical, direction(required) => left/right for horizontal and up/down for vertical`|
 
-Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold shoul
+Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
 
 ## Todo : 
 
@@ -70,13 +70,20 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
 ## Sample Config : 
 
+| Config                          | Type                | Description                                           | Config |
+|------------------------------------|---------------------|-------------------------------------------------------|--------|
+| hostBroker                      | bool      | Set true to host MQTT Locally, set false to connect to external MQTT Broker.                          | Required|
+| camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
+| mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
+
+
 ```json
 {
     "platforms": [
         {
             "platform": "Dafang",
             "mqtt": {
-                "hostBroker": true, // Hosts MQTT Broker Locally using MongoDB. Set false to connect to external MQTT Broker.
+                "hostBroker": true,
                 "port": 1883,
                 "host": "localhost",
                 "debug": true,
@@ -85,7 +92,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
             "cameras": [{
                 "cameraName": "My Dafang",
                 "cameraIP": "192.168.1.12",
-                "mqttTopic": "home/dafang/#", // Topic Should match Dafang Device Config
+                "mqttTopic": "myhome/dafang/#",
                 "disableStream": false,
                 "accessories": [
                                     {
