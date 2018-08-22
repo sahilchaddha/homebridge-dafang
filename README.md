@@ -68,6 +68,12 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
  `* => Needs changes on Dafang CFW.`
 
+ ## Demo :
+
+ Sorry for crappy quality. Tested on Rpi + Slow Wifi
+
+ ![Example](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo.gif)
+
 ## Sample Config : 
 
 | Config                          | Type                | Description                                           | Config |
