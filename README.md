@@ -146,6 +146,14 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
                                         "type": "moveCamera",
                                         "axis": "vertical",
                                         "direction": "down"
+                                    },
+                                    {
+                                        "name": "Record Video",
+                                        "type": "recordVideo"
+                                    },
+                                    {
+                                        "name": "Record Audio",
+                                        "type": "recordAudio"
                                     }
                     ],
                     "videoConfig": {

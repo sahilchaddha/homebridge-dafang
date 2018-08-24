@@ -70,6 +70,14 @@
                                         "type": "moveCamera",
                                         "axis": "vertical",
                                         "direction": "down"
+                                    },
+                                    {
+                                        "name": "Record Video",
+                                        "type": "recordVideo"
+                                    },
+                                    {
+                                        "name": "Record Audio",
+                                        "type": "recordAudio"
                                     }
                     ]  
             }]
