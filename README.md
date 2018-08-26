@@ -86,7 +86,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
 | Config                          | Type                | Description                                           | Config |
 |------------------------------------|---------------------|-------------------------------------------------------|--------|
-| hostBroker                      | bool      | Set true to host MQTT Locally, set false to connect to external MQTT Broker.                          | Required|
+| mqtt.hostBroker                      | bool      | Set true to host MQTT Locally, set false to connect to external MQTT Broker.                          | Required|
 | cameraRTSPStreamUrl                      | string      | RTSP Stream Url e.g. `rtsp://192.168.1.2:8554/unicast`                          | Required|
 | camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
