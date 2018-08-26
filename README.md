@@ -50,7 +50,7 @@ This library supports hosting MQTT Broker as well as connecting to existing Brok
 | Move/Rotate Camera Motor           | `moveCamera`              | Moves Dafang Camera Horizontal/Vertical right/left up/down Motor| `axis(required) => horizontal/vertical, direction(required) => left/right for horizontal and up/down for vertical`|
 | Record Video+Audio           | `recordVideo`              | Records Video + Audio Toggle Switch. Video(mp4) files are saved in local machine running homebridge| None|
 | Record Audio Only           | `recordAudio`              | Records Audio Toggle Switch. Audio(aac) files are saved in local machine running homebridge| None|
-| Capture Image           | `camptureImage`              | Captures Image from Camera and saves to configured folder| None|
+| Capture Image           | `captureImage`              | Captures Image from Camera and saves to configured folder| None|
 | Storage Sensor           | `storageSensor`              | Alerts when storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
 | Clear Storage Switch           | `clearStorage`              | Clears All Recordings| None|
 
