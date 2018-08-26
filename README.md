@@ -51,7 +51,7 @@ This library supports hosting MQTT Broker as well as connecting to existing Brok
 | Record Video+Audio           | `recordVideo`              | Records Video + Audio Toggle Switch. Video(mp4) files are saved in local machine running homebridge| None|
 | Record Audio Only           | `recordAudio`              | Records Audio Toggle Switch. Audio(aac) files are saved in local machine running homebridge| None|
 | Capture Image           | `captureImage`              | Captures Image from Camera and saves to configured folder| None|
-| Storage Sensor           | `storageSensor`              | Alerts when storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
+| Recorded Media Storage Sensor           | `storageSensor`              | Alerts when recorded media folder storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
 | Clear Storage Switch           | `clearStorage`              | Clears All Recordings| None|
 
 Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
@@ -69,7 +69,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 - [X] Recording Video + Audio on Rpi
 - [X] Recoring Audio on Rpi
 - [X] Capture Image on Rpi
-- [X] Storage Full Sensor
+- [X] Recorded Media Storage Full Sensor
 - [X] Clear Storage Switch
 - [ ] Update Documentation + Sample Video
 - [ ] Intercom 2 Way Audio *
@@ -91,8 +91,9 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 | camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
 | folder                | string | Absolute path of directory where recordings/images will be saved                      | Required|
-| segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos.                      | Optional|
-| maxDirSize                | number | Max Size of folder (in mb) where recordings will be saved                      | Optional|
+| segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos. Default : 60 (1 minute)                      | Optional|
+| maxDirSize                | number | Max Size of folder (in mb) where recordings will be saved. Default : 2048 (2GB)                      | Optional|
+| checkStorageSizeInterval                | number | Time in seconds to re check recording folder size for `storageSensor`. Default : 300 (5 min)                      | Optional|
 
 ```json
 {

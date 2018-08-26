@@ -17,6 +17,7 @@
                 "folder": "/Users/sahilchaddha/Sahil/Recordings/",
                 "segmentLength": 60,
                 "maxDirSize": 2048,
+                "checkStorageSizeInterval": 300,
                 "accessories": [
                                     {
                                         "name": "Living Room Motion Sensor",

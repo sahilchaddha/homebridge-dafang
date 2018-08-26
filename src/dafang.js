@@ -56,6 +56,7 @@ CameraAccesories.prototype = {
       accessoryConfig.maxDirSize = this.config.maxDirSize
       accessoryConfig.cameraName = this.config.cameraName
       accessoryConfig.cameraRTSPStreamUrl = this.config.cameraRTSPStreamUrl
+      accessoryConfig.checkStorageSizeInterval = this.config.checkStorageSizeInterval
 
       if (accessoryConfig.type == null) {
         throw new Error('Each accessory must be configured with a "type". e.g. "switch"')
