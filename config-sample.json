@@ -84,6 +84,10 @@
                                     {
                                         "name": "Clear Storage Switch",
                                         "type": "clearStorage"
+                                    },
+                                    {
+                                        "name": "Reset Streaming",
+                                        "type": "resetFFMPEG"
                                     }
                     ],
                     "videoConfig": {

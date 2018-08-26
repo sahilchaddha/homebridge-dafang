@@ -27,6 +27,7 @@ const classTypes = {
   captureImage: DafangAccessory.CaptureImage,
   storageSensor: DafangAccessory.StorageSensor,
   clearStorage: DafangAccessory.ClearStorage,
+  resetFFMPEG: DafangAccessory.ResetFFMPEG,
 }
 
 var homebridge

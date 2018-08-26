@@ -53,6 +53,7 @@ This library supports hosting MQTT Broker as well as connecting to existing Brok
 | Capture Image           | `captureImage`              | Captures Image from Camera and saves to configured folder| None|
 | Recorded Media Storage Sensor           | `storageSensor`              | Alerts when recorded media folder storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
 | Clear Storage Switch           | `clearStorage`              | Clears All Recordings| None|
+| Reset FFMEPG Switch           | `resetFFMPEG`              | Kills all FFMPEG Zombie Scripts| None|
 
 Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
 
@@ -178,6 +179,10 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
                                     {
                                         "name": "Clear Storage Switch",
                                         "type": "clearStorage"
+                                    },
+                                    {
+                                        "name": "Reset Streaming",
+                                        "type": "resetFFMPEG"
                                     }
                     ]
             }]

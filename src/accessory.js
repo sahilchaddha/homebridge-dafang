@@ -20,6 +20,7 @@ const RecordVideoAccessory = require('./accessories/recordVideo')
 const DirectorySpaceSensorAccessory = require('./accessories/dirSpaceSensor')
 const ClearDirectorySwitchAccessory = require('./accessories/clearDirSwitch')
 const CaptureImageSwitchAccessory = require('./accessories/captureImageSwitch')
+const ResetFFMPEGSwitchAccessory = require('./accessories/resetFFMPEG')
 
 module.exports = {
   MotionSensor: MotionSensorAccessory,
@@ -35,4 +36,5 @@ module.exports = {
   StorageSensor: DirectorySpaceSensorAccessory,
   ClearStorage: ClearDirectorySwitchAccessory,
   CaptureImage: CaptureImageSwitchAccessory,
+  ResetFFMPEG: ResetFFMPEGSwitchAccessory,
 }
