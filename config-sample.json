@@ -11,7 +11,7 @@
             },
             "cameras": [{
                 "cameraName": "My Dafang",
-                "cameraIP": "192.168.1.12",
+                "cameraRTSPStreamUrl": "rtsp://192.168.1.12:8554/unicast",
                 "mqttTopic": "myhome/dafang/#",
                 "disableStream": false,
                 "folder": "/Users/sahilchaddha/Sahil/Recordings/",

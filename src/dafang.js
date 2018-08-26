@@ -55,6 +55,7 @@ CameraAccesories.prototype = {
       accessoryConfig.segmentLength = this.config.segmentLength
       accessoryConfig.maxDirSize = this.config.maxDirSize
       accessoryConfig.cameraName = this.config.cameraName
+      accessoryConfig.cameraRTSPStreamUrl = this.config.cameraRTSPStreamUrl
 
       if (accessoryConfig.type == null) {
         throw new Error('Each accessory must be configured with a "type". e.g. "switch"')
@@ -125,11 +126,11 @@ Dafang.prototype = {
           var cameraAccessory = new homebridge.Accessory(cameraConfig.cameraName, uuid, homebridge.Categories.CAMERA)
           var newCameraConfig = cameraConfig
           newCameraConfig.name = cameraConfig.cameraName
-          const cameraIP = cameraConfig.cameraIP
+          const cameraRTSPStreamUrl = cameraConfig.cameraRTSPStreamUrl
           if (newCameraConfig.videoConfig == null) {
             newCameraConfig.videoConfig = {}
-            newCameraConfig.videoConfig.source = '-rtsp_transport tcp -i rtsp://' + cameraIP + '/unicast'
-            newCameraConfig.videoConfig.stillImageSource = '-rtsp_transport http -i rtsp://' + cameraIP + '/unicast -vframes 1 -r 1'
+            newCameraConfig.videoConfig.source = '-rtsp_transport tcp -i ' + cameraRTSPStreamUrl
+            newCameraConfig.videoConfig.stillImageSource = '-rtsp_transport http -i ' + cameraRTSPStreamUrl + ' -vframes 1 -r 1'
             newCameraConfig.videoConfig.maxStreams = 2
             newCameraConfig.videoConfig.maxWidth = 1280
             newCameraConfig.videoConfig.maxHeight = 720
