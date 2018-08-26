@@ -24,6 +24,9 @@ const classTypes = {
   moveCamera: DafangAccessory.CameraMotor,
   recordAudio: DafangAccessory.RecordAudio,
   recordVideo: DafangAccessory.RecordVideo,
+  captureImage: DafangAccessory.CaptureImage,
+  storageSensor: DafangAccessory.StorageSensor,
+  clearStorage: DafangAccessory.ClearStorage,
 }
 
 var homebridge

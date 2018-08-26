@@ -168,7 +168,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
                                     },
                                     {
                                         "name": "Capture Image",
-                                        "type": "camptureImage"
+                                        "type": "captureImage"
                                     },
                                     {
                                         "name": "RPi Storage Sensor",

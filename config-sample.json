@@ -75,7 +75,7 @@
                                     },
                                     {
                                         "name": "Capture Image",
-                                        "type": "camptureImage"
+                                        "type": "captureImage"
                                     },
                                     {
                                         "name": "RPi Storage Sensor",

@@ -17,6 +17,9 @@ const IntercomAccessory = require('./accessories/intercom')
 const CameraMotorAccessory = require('./accessories/moveCamera')
 const RecordAudioAccessory = require('./accessories/recordAudio')
 const RecordVideoAccessory = require('./accessories/recordVideo')
+const DirectorySpaceSensorAccessory = require('./accessories/dirSpaceSensor')
+const ClearDirectorySwitchAccessory = require('./accessories/clearDirSwitch')
+const CaptureImageSwitchAccessory = require('./accessories/captureImageSwitch')
 
 module.exports = {
   MotionSensor: MotionSensorAccessory,
@@ -29,4 +32,7 @@ module.exports = {
   RecordAudio: RecordAudioAccessory,
   RecordVideo: RecordVideoAccessory,
   Camera: CameraAccessory,
+  StorageSensor: DirectorySpaceSensorAccessory,
+  ClearStorage: ClearDirectorySwitchAccessory,
+  CaptureImage: CaptureImageSwitchAccessory,
 }
