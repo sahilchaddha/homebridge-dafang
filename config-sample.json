@@ -15,9 +15,8 @@
                 "mqttTopic": "myhome/dafang/#",
                 "disableStream": false,
                 "folder": "/Users/sahilchaddha/Sahil/Recordings/",
-                "length": 60,
+                "segmentLength": 60,
                 "maxDirSize": 2048,
-                "autoKillZombieScripts": true,
                 "accessories": [
                                     {
                                         "name": "Living Room Motion Sensor",

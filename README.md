@@ -90,9 +90,8 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 | camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
 | folder                | string | Absolute path of directory where recordings/images will be saved                      | Required|
-| length                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos.                      | Optional|
+| segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos.                      | Optional|
 | maxDirSize                | number | Max Size of folder (in mb) where recordings will be saved                      | Optional|
-| autoKillZombieScripts                | boolean | Should Kill FFMPEG Zombie scripts automatically                      | Optional|
 
 ```json
 {

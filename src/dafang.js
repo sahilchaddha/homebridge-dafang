@@ -50,6 +50,12 @@ CameraAccesories.prototype = {
       if (this.config.mqttTopic != null) {
         accessoryConfig.mqttTopic = this.config.mqttTopic
       }
+
+      accessoryConfig.folder = this.config.folder
+      accessoryConfig.segmentLength = this.config.segmentLength
+      accessoryConfig.maxDirSize = this.config.maxDirSize
+      accessoryConfig.cameraName = this.config.cameraName
+
       if (accessoryConfig.type == null) {
         throw new Error('Each accessory must be configured with a "type". e.g. "switch"')
       }
