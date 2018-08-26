@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/dm/homebridge-dafang.svg)](https://www.npmjs.com/package/homebridge-dafang)
 [![npm](https://img.shields.io/npm/v/homebridge-dafang.svg)](https://www.npmjs.com/package/homebridge-dafang)
-[![GitHub release](https://img.shields.io/github/release/sahilchaddha/homebridge-dafang.svg)](https://github.com/sahilchaddha/homebridge-dafang)
+[![CircleCI](https://circleci.com/gh/sahilchaddha/homebridge-dafang.svg?style=svg)](https://circleci.com/gh/sahilchaddha/homebridge-dafang)
 
 
 Homebridge Plugin for Xiaomi Dafang Camera
