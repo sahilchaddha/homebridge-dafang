@@ -11,40 +11,34 @@
             },
             "cameras": [{
                 "cameraName": "My Dafang",
-                "cameraIP": "192.168.1.12",
-                "mqttTopic": "home/dafang/#",
+                "cameraRTSPStreamUrl": "rtsp://192.168.1.12:8554/unicast",
+                "mqttTopic": "myhome/dafang/#",
                 "disableStream": false,
-                "videoConfig": {
-                    "source": "-rtsp_transport tcp -i rtsp://192.168.1.2:8554/unicast",
-                    "stillImageSource": "-rtsp_transport http -i rtsp://192.168.1.2:8554/unicast -vframes 1 -r 1",
-                    "maxStreams": 5,
-                    "maxWidth": 1280,
-                    "maxHeight": 720,
-                    "maxFPS": 25,
-                    "vcodec": "h264",
-                    "debug": true
-                },
+                "folder": "/Users/sahilchaddha/Sahil/Recordings/",
+                "segmentLength": 60,
+                "maxDirSize": 2048,
+                "checkStorageSizeInterval": 300,
                 "accessories": [
                                     {
-                                        "name": "Motion Sensor",
+                                        "name": "Living Room Motion Sensor",
                                         "type": "motionSensor",
                                         "threshold": 300000
                                     },
                                     {
-                                        "name": "AutoMotion Tracking Switch",
+                                        "name": "Living Room Auto Motion Tracking Switch",
                                         "type": "autoMotionTrackingSwitch"
                                     },
                                     {
-                                        "name": "Night Vision Sensor",
+                                        "name": "Living Room Night Vision Sensor",
                                         "type": "nightVisionSensor",
                                         "threshold": 0
                                     },
                                     {
-                                        "name": "Night Vision Switch",
+                                        "name": "Living Room Night Vision Switch",
                                         "type": "nightVisionSwitch"
                                     },
                                     {
-                                        "name": "AutoNight Vision Switch",
+                                        "name": "Living Room Auto Night Vision Switch",
                                         "type": "autoNightVisionSwitch"
                                     },
                                     {
@@ -70,8 +64,42 @@
                                         "type": "moveCamera",
                                         "axis": "vertical",
                                         "direction": "down"
+                                    },
+                                    {
+                                        "name": "Record Video",
+                                        "type": "recordVideo"
+                                    },
+                                    {
+                                        "name": "Record Audio",
+                                        "type": "recordAudio"
+                                    },
+                                    {
+                                        "name": "Capture Image",
+                                        "type": "captureImage"
+                                    },
+                                    {
+                                        "name": "RPi Storage Sensor",
+                                        "type": "storageSensor"
+                                    },
+                                    {
+                                        "name": "Clear Storage Switch",
+                                        "type": "clearStorage"
+                                    },
+                                    {
+                                        "name": "Reset Streaming",
+                                        "type": "resetFFMPEG"
                                     }
-                    ]  
+                    ],
+                    "videoConfig": {
+                        "source": "-rtsp_transport tcp -i rtsp://DAFANG_IP:8554/unicast",
+                        "stillImageSource": "-rtsp_transport http -i rtsp://DAFANG_IP:8554/unicast -vframes 1 -r 1",
+                        "maxStreams": 5,
+                        "maxWidth": 1280,
+                        "maxHeight": 720,
+                        "maxFPS": 25,
+                        "vcodec": "h264",
+                        "debug": true
+                }
             }]
         }
     ]

@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/dm/homebridge-dafang.svg)](https://www.npmjs.com/package/homebridge-dafang)
 [![npm](https://img.shields.io/npm/v/homebridge-dafang.svg)](https://www.npmjs.com/package/homebridge-dafang)
-[![GitHub release](https://img.shields.io/github/release/sahilchaddha/homebridge-dafang.svg)](https://github.com/sahilchaddha/homebridge-dafang)
+[![CircleCI](https://circleci.com/gh/sahilchaddha/homebridge-dafang.svg?style=svg)](https://circleci.com/gh/sahilchaddha/homebridge-dafang)
 
 
 Homebridge Plugin for Xiaomi Dafang Camera
@@ -48,6 +48,12 @@ This library supports hosting MQTT Broker as well as connecting to existing Brok
 | Automatic Night Mode Toggle Switch | `autoNightVisionSwitch` | Toggles Automatic Night Mode on Camera | None     |
 | Automatic Motion Tracking Switch   | `autoMotionTrackingSwitch` | Toggles Automatic Motion Tracking on Dafang    | None  |
 | Move/Rotate Camera Motor           | `moveCamera`              | Moves Dafang Camera Horizontal/Vertical right/left up/down Motor| `axis(required) => horizontal/vertical, direction(required) => left/right for horizontal and up/down for vertical`|
+| Record Video+Audio           | `recordVideo`              | Records Video + Audio Toggle Switch. Video(mp4) files are saved in local machine running homebridge| None|
+| Record Audio Only           | `recordAudio`              | Records Audio Toggle Switch. Audio(aac) files are saved in local machine running homebridge| None|
+| Capture Image           | `captureImage`              | Captures Image from Camera and saves to configured folder| None|
+| Recorded Media Storage Sensor           | `storageSensor`              | Alerts when recorded media folder storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
+| Clear Storage Switch           | `clearStorage`              | Clears All Recordings| None|
+| Reset FFMEPG Switch           | `resetFFMPEG`              | Kills all FFMPEG Zombie Scripts. Audio/Video Recordings will restart recording.| None|
 
 Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
 
@@ -61,9 +67,13 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 - [X] Camera
 - [X] Rotate/Move Camera
 - [X] Support for Multiple Cameras (Volunteer Testers Required)
+- [X] Recording Video + Audio on Rpi
+- [X] Recoring Audio on Rpi
+- [X] Capture Image on Rpi
+- [X] Recorded Media Storage Full Sensor
+- [X] Clear Storage Switch
+- [X] Reset FFMEG Switch
 - [ ] Update Documentation + Sample Video
-- [ ] Recording Video + Audio on NAS/Rpi
-- [ ] Recoring Audio on NAS/Rpi
 - [ ] Intercom 2 Way Audio *
 
  `* => Needs changes on Dafang CFW.`
@@ -72,16 +82,33 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
  Sorry for crappy quality. Tested on Rpi + Slow Wifi
 
- ![Example](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo.gif)
+### Advanced Demo : 
 
-## Sample Config : 
+ ![Advanced Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/dev/demo-1.gif)
+
+### Simple Demo : 
+
+ ![Simple Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/dev/demo-2.gif)
+
+## Plugin Config : 
 
 | Config                          | Type                | Description                                           | Config |
 |------------------------------------|---------------------|-------------------------------------------------------|--------|
-| hostBroker                      | bool      | Set true to host MQTT Locally, set false to connect to external MQTT Broker.                          | Required|
+| mqtt.hostBroker                      | bool      | Set true to host MQTT Locally, set false to connect to external MQTT Broker.                          | Required|
+| cameras                      | Array (Object)      | Can add Multiple Cameras                          | Required|
+
+
+## Camera Config : 
+
+| Config                          | Type                | Description                                           | Config |
+|------------------------------------|---------------------|-------------------------------------------------------|--------|
+| cameraRTSPStreamUrl                      | string      | RTSP Stream Url e.g. `rtsp://192.168.1.2:8554/unicast`                          | Required|
 | camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
-
+| folder                | string | Absolute path of directory where recordings/images will be saved                      | Required|
+| segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos. Default : 60 (1 minute)                      | Optional|
+| maxDirSize                | number | Max Size of folder (in mb) where recordings will be saved. Default : 2048 (2GB)                      | Optional|
+| checkStorageSizeInterval                | number | Time in seconds to re check recording folder size for `storageSensor`. Default : 300 (5 min)                      | Optional|
 
 ```json
 {
@@ -97,9 +124,9 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
             },
             "cameras": [{
                 "cameraName": "My Dafang",
-                "cameraIP": "192.168.1.12",
+                "cameraRTSPStreamUrl": "rtsp://192.168.1.12:8554/unicast",
                 "mqttTopic": "myhome/dafang/#",
-                "disableStream": false,
+                "folder": "/Users/sahilchaddha/Sahil/Recordings/",
                 "accessories": [
                                     {
                                         "name": "Living Room Motion Sensor",
@@ -146,20 +173,48 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
                                         "type": "moveCamera",
                                         "axis": "vertical",
                                         "direction": "down"
+                                    },
+                                    {
+                                        "name": "Record Video",
+                                        "type": "recordVideo"
+                                    },
+                                    {
+                                        "name": "Record Audio",
+                                        "type": "recordAudio"
+                                    },
+                                    {
+                                        "name": "Capture Image",
+                                        "type": "captureImage"
+                                    },
+                                    {
+                                        "name": "RPi Storage Sensor",
+                                        "type": "storageSensor"
+                                    },
+                                    {
+                                        "name": "Clear Storage Switch",
+                                        "type": "clearStorage"
+                                    },
+                                    {
+                                        "name": "Reset Streaming",
+                                        "type": "resetFFMPEG"
                                     }
-                    ],
-                    "videoConfig": {
-                        "source": "-rtsp_transport tcp -i rtsp://DAFANG_IP:8554/unicast",
-                        "stillImageSource": "-rtsp_transport http -i rtsp://DAFANG_IP:8554/unicast -vframes 1 -r 1",
-                        "maxStreams": 5,
-                        "maxWidth": 1280,
-                        "maxHeight": 720,
-                        "maxFPS": 25,
-                        "vcodec": "h264",
-                        "debug": true
-                }
+                    ]
             }]
         }
     ]
 }
 ```
+
+## Need Help ?
+
+Get Slack Invite => `https://slackin-znyruquwmv.now.sh/`
+
+Slack Channel => `https://homebridgeteam.slack.com/messages/homebridge-dafang`
+
+Slack User => `@sahilchaddha`
+
+### Author
+
+Sahil Chaddha
+
+mail@sahilchaddha.com
