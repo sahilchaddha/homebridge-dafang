@@ -84,11 +84,11 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
 ### Advanced Demo : 
 
- ![Advanced Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/dev/demo-1.gif)
+ ![Advanced Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/master/demo-1.gif)
 
 ### Simple Demo : 
 
- ![Simple Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/dev/demo-2.gif)
+ ![Simple Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/master/demo-2.gif)
 
 ## Plugin Config : 
 
