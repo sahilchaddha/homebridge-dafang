@@ -53,7 +53,7 @@ This library supports hosting MQTT Broker as well as connecting to existing Brok
 | Capture Image           | `captureImage`              | Captures Image from Camera and saves to configured folder| None|
 | Recorded Media Storage Sensor           | `storageSensor`              | Alerts when recorded media folder storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
 | Clear Storage Switch           | `clearStorage`              | Clears All Recordings| None|
-| Reset FFMEPG Switch           | `resetFFMPEG`              | Kills all FFMPEG Zombie Scripts| None|
+| Reset FFMEPG Switch           | `resetFFMPEG`              | Kills all FFMPEG Zombie Scripts. Audio/Video Recordings will restart recording.| None|
 
 Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
 
@@ -72,6 +72,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 - [X] Capture Image on Rpi
 - [X] Recorded Media Storage Full Sensor
 - [X] Clear Storage Switch
+- [X] Reset FFMEG Switch
 - [ ] Update Documentation + Sample Video
 - [ ] Intercom 2 Way Audio *
 
@@ -81,13 +82,22 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
  Sorry for crappy quality. Tested on Rpi + Slow Wifi
 
- ![Example](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo.gif)
+ ![Advanced Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/dev/demo-1.gif)
 
-## Sample Config : 
+ ![Simple Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/dev/demo-2.gif)
+
+## Plugin Config : 
 
 | Config                          | Type                | Description                                           | Config |
 |------------------------------------|---------------------|-------------------------------------------------------|--------|
 | mqtt.hostBroker                      | bool      | Set true to host MQTT Locally, set false to connect to external MQTT Broker.                          | Required|
+| cameras                      | Array (Object)      | Can add Multiple Cameras                          | Required|
+
+
+## Camera Config : 
+
+| Config                          | Type                | Description                                           | Config |
+|------------------------------------|---------------------|-------------------------------------------------------|--------|
 | cameraRTSPStreamUrl                      | string      | RTSP Stream Url e.g. `rtsp://192.168.1.2:8554/unicast`                          | Required|
 | camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
@@ -190,3 +200,17 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
     ]
 }
 ```
+
+## Need Help ?
+
+Get Slack Invite => `https://slackin-znyruquwmv.now.sh/`
+
+Slack Channel => `https://homebridgeteam.slack.com/messages/homebridge-dafang`
+
+Slack User => `@sahilchaddha`
+
+### Author
+
+Sahil Chaddha
+
+mail@sahilchaddha.com
