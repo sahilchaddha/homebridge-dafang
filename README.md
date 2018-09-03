@@ -74,6 +74,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 - [X] Clear Storage Switch
 - [X] Reset FFMEG Switch
 - [ ] Update Documentation + Sample Video
+- [ ] Timelapse Switch
 - [ ] Intercom 2 Way Audio *
 
  `* => Needs changes on Dafang CFW.`
@@ -84,11 +85,11 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
 ### Advanced Demo : 
 
- ![Advanced Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/master/demo-1.gif)
+ ![Advanced Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo-advanced.gif)
 
 ### Simple Demo : 
 
- ![Simple Demo](https://github.com/sahilchaddha/homebridge-dafang/raw/master/demo-2.gif)
+ ![Simple Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo-simple.gif)
 
 ## Plugin Config : 
 
