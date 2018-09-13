@@ -7,7 +7,7 @@
 [![CircleCI](https://circleci.com/gh/sahilchaddha/homebridge-dafang.svg?style=svg)](https://circleci.com/gh/sahilchaddha/homebridge-dafang)
 
 
-Homebridge Plugin for Xiaomi Dafang Camera
+Homebridge Plugin for Xiaomi Dafang / Wyze Camera
 
 ## Installation
 
@@ -26,11 +26,22 @@ Homebridge Plugin for Xiaomi Dafang Camera
 
 ## Prerequisite : 
 
-1. Xiaomi Dafang Camera running CFW (https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/)
+1. Xiaomi Dafang / Wyze Camera running CFW (https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/)
 
 MQTT-Control & MQTT-Status must be running with configured host. You can configure MQTT Broker configuration at `/system/sdcard/config/mqtt.conf`.
 
 This library supports hosting MQTT Broker as well as connecting to existing Broker as a Client.
+
+Supported Cameras :
+
+Name | Picture
+--- | ---
+Xiaomi Dafang | ![Dafang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/dafang.png)
+Xiaomi Xiaofang 1S | ![XiaoFang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/xiaofang.png)
+Wyzecam Pan | ![Dafang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/dafang.png)
+Wyzecam V2 | ![XiaoFang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/xiaofang.png)
+Sannce I21AG, MixSight HX-I2110T2, WanScam HW0036, Escam G02, Digoo BB-M2 | ![XiaoFang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/sannce.jpg)
+Any other Device with Ingenic T10/T20 Device | ![T20](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/t20.png)
 
 ## Lint
 
