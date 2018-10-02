@@ -30,6 +30,10 @@ const DirectorySpaceSensor = class extends Accessory {
   checkDiskSpace() {
     const self = this
     self.log('Checking Recordings Folder Size : ' + this.config.folder)
+    if (self.config.folder == null) {
+      self.log('Folder Key missing in configuration')
+      return
+    }
     fh.getDirectorySize(this.config.folder, (err, value) => {
       if (err) {
         self.log('Error Occured')

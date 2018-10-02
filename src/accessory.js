@@ -21,6 +21,15 @@ const DirectorySpaceSensorAccessory = require('./accessories/dirSpaceSensor')
 const ClearDirectorySwitchAccessory = require('./accessories/clearDirSwitch')
 const CaptureImageSwitchAccessory = require('./accessories/captureImageSwitch')
 const ResetFFMPEGSwitchAccessory = require('./accessories/resetFFMPEG')
+const MotionDetectionSwitchAccessory = require('./accessories/motionDetectionSwitch')
+const RTSPSwitchAccessory = require('./accessories/rtspSwitch')
+const MJPEGSwitchAccessory = require('./accessories/mjpegSwitch')
+
+// Debug Accessories
+
+const RecalibrateSwitchAccessory = require('./accessories/recalibrateSwitch')
+const RestartSwitchAccessory = require('./accessories/restartSwitch')
+const RemountSwitchAccessory = require('./accessories/remountSwitch')
 
 module.exports = {
   MotionSensor: MotionSensorAccessory,
@@ -37,4 +46,10 @@ module.exports = {
   ClearStorage: ClearDirectorySwitchAccessory,
   CaptureImage: CaptureImageSwitchAccessory,
   ResetFFMPEG: ResetFFMPEGSwitchAccessory,
+  MotionDetection: MotionDetectionSwitchAccessory,
+  RTSPSwitch: RTSPSwitchAccessory,
+  MJPEGSwitch: MJPEGSwitchAccessory,
+  RecalibrateSwitch: RecalibrateSwitchAccessory,
+  RestartSwitch: RestartSwitchAccessory,
+  RemountSwitch: RemountSwitchAccessory,
 }
