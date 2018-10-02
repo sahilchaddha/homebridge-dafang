@@ -136,15 +136,16 @@ Open Your Camera's Dashboard by opening `https://CAMERA_IP`.
 
 Login with username `root` and password `ismart12`
 
-![](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/dev/assets/shot-2.png)
+![](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/assets/shot-2.png)
 
 Go to Manage -> Services
 
-![](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/dev/assets/shot-1.png)
+![](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/assets/shot-1.png)
 
 Scroll to `mqtt-control` service.
 
 Start `mqtt-control` and set autorun to on
+
 Start `mqtt-status` and set autorun to on
 
 Contributions always welcome.
