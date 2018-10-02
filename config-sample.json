@@ -88,6 +88,30 @@
                                     {
                                         "name": "Reset Streaming",
                                         "type": "resetFFMPEG"
+                                    },
+                                    {
+                                        "name": "Motion Detection Switch",
+                                        "type": "motionDetection"
+                                    },
+                                    {
+                                        "name": "RTSPSwitch",
+                                        "type": "rtspSwitch"
+                                    },
+                                    {
+                                        "name": "MJPEG Switch",
+                                        "type": "mjpegSwitch"
+                                    },
+                                    {
+                                        "name": "Recalibrate Switch",
+                                        "type": "recalibrateSwitch"
+                                    },
+                                    {
+                                        "name": "Restart Switch",
+                                        "type": "restartSwitch"
+                                    },
+                                    {
+                                        "name": "ReMount Switch",
+                                        "type": "remountSwitch"
                                     }
                     ],
                     "videoConfig": {

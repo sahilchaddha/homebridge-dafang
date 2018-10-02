@@ -12,25 +12,23 @@ Homebridge Plugin for Xiaomi Dafang / Wyze Camera
 ## Installation
 
 1. Install ffmpeg on your device
+
+```
+    $ brew install ffmpeg --with-openh264 --with-fdk-aac
+```
+
 2. Install the plugin using:
 
 ```shell
     $ npm install -g --unsafe-perm homebridge
     $ npm install -g --unsafe-perm homebridge-dafang
 ```
-3. Connect/Run MongoDB to host MQTT locally. Change Config to connect to external MQTT Broker. You can use mlab.com to host a free mongoDB instance.
-4. Edit config.json and add your camera.
+
+3. Install CFW on camera and set up MQTT. Refer to [Setup Readme](https://github.com/sahilchaddha/homebridge-dafang/blob/master/Setup_MQTT.md)
+4. Edit config.json and add the plugin. Refer to `config-sample.json` in repository.
 5. Run Homebridge
-6. Add extra camera accessories in Home app. The setup code is the same as in homebridge.You can go into -> `Add New Accessory -> Add Manually -> Add Homebridge Pin -> Select Camera -> Add`
+6. Add extra camera accessories in Home app. The setup code is the same as in homebridge.You can go into -> ` + -> Add New Accessory -> Add Manually -> Add Homebridge Pin -> Select Camera -> Add`
 
-
-## Prerequisite : 
-
-1. Xiaomi Dafang / Wyze Camera running CFW (https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/)
-
-MQTT-Control & MQTT-Status must be running with configured host. You can configure MQTT Broker configuration at `/system/sdcard/config/mqtt.conf`.
-
-This library supports hosting MQTT Broker as well as connecting to existing Broker as a Client.
 
 Supported Cameras :
 
@@ -43,11 +41,10 @@ Wyzecam V2 | ![XiaoFang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw
 Sannce I21AG, MixSight HX-I2110T2, WanScam HW0036, Escam G02, Digoo BB-M2 | ![XiaoFang](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/sannce.jpg)
 Any other Device with Ingenic T10/T20 Device | ![T20](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/t20.png)
 
-## Lint
+## Todo : 
 
-```shell
-    $ npm run lint
-```
+- [ ] Timelapse Switch
+- [ ] Intercom 2 Way Audio **
 
 ## Accessories : 
 
@@ -65,34 +62,20 @@ Any other Device with Ingenic T10/T20 Device | ![T20](https://github.com/EliasKo
 | Recorded Media Storage Sensor           | `storageSensor`              | Alerts when recorded media folder storage is full on the system due to recordings. You can set custom disk space in MB in config| None|
 | Clear Storage Switch           | `clearStorage`              | Clears All Recordings| None|
 | Reset FFMEPG Switch           | `resetFFMPEG`              | Kills all FFMPEG Zombie Scripts. Audio/Video Recordings will restart recording.| None|
+| Motion Detection Switch           | `motionDetection`              | Enables/Disable Motion Detection. Turning off this switch will stop sending motion detection alerts.| None|
+| RTSP Server Switch           | `rtspSwitch`              | Debug Switch to turn on/off RTSP H264 Stream Server.| None|
+| MJPEG Server Switch           | `mjpegSwitch`              | Debug Switch to turn on/off MJPEG Server| None|
+| Recalibrate Motor Switch **           | `recalibrateSwitch`              | Debug Switch to Re-Calibrate Camera Motor.| None|
+| Restart Camera Switch **           | `restartSwitch`              | Debug Switch to restart Camera.| None|
+| Re-Mount SD Card RW Switch **           | `remountSwitch`              | Debug Switch to re mount sd card with RW permission. It prevents SD Card Failures like stuck RTSP Stream.| None|
+
+`** => Reinstall Dafang CFW for system switches with https://github.com/sahilchaddha/Xiaomi-Dafang-Hacks/`
 
 Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
 
-## Todo : 
-
-- [X] Motion Sensor
-- [X] Night Mode Sensor
-- [X] Night Mode Toggle Switch
-- [X] Automatic Night Mode Toggle Switch
-- [X] Automatic Motion Tracking Toggle Switch
-- [X] Camera
-- [X] Rotate/Move Camera
-- [X] Support for Multiple Cameras (Volunteer Testers Required)
-- [X] Recording Video + Audio on Rpi
-- [X] Recoring Audio on Rpi
-- [X] Capture Image on Rpi
-- [X] Recorded Media Storage Full Sensor
-- [X] Clear Storage Switch
-- [X] Reset FFMEG Switch
-- [ ] Update Documentation + Sample Video
-- [ ] Timelapse Switch
-- [ ] Intercom 2 Way Audio *
-
- `* => Needs changes on Dafang CFW.`
-
  ## Demo :
 
- Sorry for crappy quality. Tested on Rpi + Slow Wifi
+ Sorry for crappy quality. Tested on Rpi + Slow Network
 
 ### Advanced Demo : 
 
@@ -115,7 +98,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 | Config                          | Type                | Description                                           | Config |
 |------------------------------------|---------------------|-------------------------------------------------------|--------|
 | cameraRTSPStreamUrl                      | string      | RTSP Stream Url e.g. `rtsp://192.168.1.2:8554/unicast`                          | Required|
-| camera/disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
+| disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
 | folder                | string | Absolute path of directory where recordings/images will be saved                      | Required|
 | segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos. Default : 60 (1 minute)                      | Optional|
@@ -215,6 +198,12 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
         }
     ]
 }
+```
+
+## Lint
+
+```shell
+    $ npm run lint
 ```
 
 ## Need Help ?

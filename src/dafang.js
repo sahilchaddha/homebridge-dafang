@@ -28,6 +28,12 @@ const classTypes = {
   storageSensor: DafangAccessory.StorageSensor,
   clearStorage: DafangAccessory.ClearStorage,
   resetFFMPEG: DafangAccessory.ResetFFMPEG,
+  motionDetection: DafangAccessory.MotionDetection,
+  rtspSwitch: DafangAccessory.RTSPSwitch,
+  mjpegSwitch: DafangAccessory.MJPEGSwitch,
+  recalibrateSwitch: DafangAccessory.RecalibrateSwitch,
+  restartSwitch: DafangAccessory.RestartSwitch,
+  remountSwitch: DafangAccessory.RemountSwitch,
 }
 
 var homebridge
@@ -129,15 +135,25 @@ Dafang.prototype = {
           var newCameraConfig = cameraConfig
           newCameraConfig.name = cameraConfig.cameraName
           const cameraRTSPStreamUrl = cameraConfig.cameraRTSPStreamUrl
-          if (newCameraConfig.videoConfig == null) {
-            newCameraConfig.videoConfig = {}
-            newCameraConfig.videoConfig.source = '-rtsp_transport tcp -i ' + cameraRTSPStreamUrl
-            newCameraConfig.videoConfig.stillImageSource = '-rtsp_transport http -i ' + cameraRTSPStreamUrl + ' -vframes 1 -r 1'
-            newCameraConfig.videoConfig.maxStreams = 2
-            newCameraConfig.videoConfig.maxWidth = 1280
-            newCameraConfig.videoConfig.maxHeight = 720
-            newCameraConfig.videoConfig.maxFPS = 30
+
+          var videoConfig = {}
+          videoConfig.source = '-rtsp_transport tcp -i ' + cameraRTSPStreamUrl
+          videoConfig.stillImageSource = '-rtsp_transport http -i ' + cameraRTSPStreamUrl + ' -vframes 1 -r 1'
+          videoConfig.maxStreams = 2
+          videoConfig.maxWidth = 1280
+          videoConfig.maxHeight = 720
+          videoConfig.maxFPS = 30
+          videoConfig.audio = true
+
+          if (newCameraConfig.videoConfig != null) {
+            const newConfigKeys = Object.keys(newCameraConfig.videoConfig)
+            newConfigKeys.forEach((key) => {
+              videoConfig[key] = newCameraConfig.videoConfig[key]
+            })
           }
+
+          newCameraConfig.videoConfig = videoConfig
+
           var cameraSource = new classTypes.camera(homebridge, newCameraConfig, self.log, 'ffmpeg')
           cameraAccessory.configureCameraSource(cameraSource)
           cameraStreams.push(cameraAccessory)
