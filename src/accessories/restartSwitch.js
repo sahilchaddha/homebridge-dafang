@@ -25,7 +25,7 @@ const RestartSwitch = class extends Accessory {
   switchStateChanged(newState, callback) {
     this.log('Restarting Dafang')
     const self = this
-    this.publishToMQTT('/debug/restart/set', 'ON')
+    this.publishToMQTT('/debug/reboot/set', 'ON')
     self.updateState()
     callback()
   }
