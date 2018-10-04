@@ -148,5 +148,11 @@ Start `mqtt-control` and set autorun to on
 
 Start `mqtt-status` and set autorun to on
 
+Run `configureMotion` and set autorun to on
+
+Set `Motion - MQTT Message` to true from `Camera Controls` on right top side of the dashboard.
+
+You can change motion detection settings from Motion Detection under Manage Tab.
+
 Contributions always welcome.
 If you have any question/advice/suggestion kindly create Github Issue
