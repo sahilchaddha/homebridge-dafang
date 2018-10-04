@@ -34,6 +34,7 @@ const classTypes = {
   recalibrateSwitch: DafangAccessory.RecalibrateSwitch,
   restartSwitch: DafangAccessory.RestartSwitch,
   remountSwitch: DafangAccessory.RemountSwitch,
+  brightness: DafangAccessory.BrightnessSensor,
 }
 
 var homebridge

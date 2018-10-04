@@ -53,6 +53,7 @@ Any other Device with Ingenic T10/T20 Device | ![T20](https://github.com/EliasKo
 | Motion Sensor                      | `motionSensor`      | Alerts if Motion is Detected                          | `threshold(optional) => In ms.`|
 | Night Vision Sensor                | `nightVisionSensor` | Alerts if Night Mode is Detected                      | `threshold(optional) => In ms.`|
 | Night Vision Switch                | `nightVisionSwitch` | Toggles Night Mode on Camera => IR_LED ON IR_CUT OFF  | None   |
+| Brightness Lux Sensor                | `brightness` | Brightness Lux Sensor  | None   |
 | Automatic Night Mode Toggle Switch | `autoNightVisionSwitch` | Toggles Automatic Night Mode on Camera | None     |
 | Automatic Motion Tracking Switch   | `autoMotionTrackingSwitch` | Toggles Automatic Motion Tracking on Dafang    | None  |
 | Move/Rotate Camera Motor           | `moveCamera`              | Moves Dafang Camera Horizontal/Vertical right/left up/down Motor| `axis(required) => horizontal/vertical, direction(required) => left/right for horizontal and up/down for vertical`|
@@ -192,6 +193,10 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
                                     {
                                         "name": "Reset Streaming",
                                         "type": "resetFFMPEG"
+                                    },
+                                    {
+                                        "name": "Camera Brightness",
+                                        "type": "brightness"
                                     }
                     ]
             }]

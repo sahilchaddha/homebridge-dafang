@@ -24,6 +24,7 @@ const ResetFFMPEGSwitchAccessory = require('./accessories/resetFFMPEG')
 const MotionDetectionSwitchAccessory = require('./accessories/motionDetectionSwitch')
 const RTSPSwitchAccessory = require('./accessories/rtspSwitch')
 const MJPEGSwitchAccessory = require('./accessories/mjpegSwitch')
+const BrightnessAccessory = require('./accessories/brightness')
 
 // Debug Accessories
 
@@ -52,4 +53,5 @@ module.exports = {
   RecalibrateSwitch: RecalibrateSwitchAccessory,
   RestartSwitch: RestartSwitchAccessory,
   RemountSwitch: RemountSwitchAccessory,
+  BrightnessSensor: BrightnessAccessory,
 }

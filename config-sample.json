@@ -112,6 +112,10 @@
                                     {
                                         "name": "ReMount Switch",
                                         "type": "remountSwitch"
+                                    },
+                                    {
+                                        "name": "Dafang Btighness",
+                                        "type": "brightness"
                                     }
                     ],
                     "videoConfig": {
