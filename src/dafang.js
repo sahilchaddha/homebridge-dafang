@@ -35,6 +35,7 @@ const classTypes = {
   restartSwitch: DafangAccessory.RestartSwitch,
   remountSwitch: DafangAccessory.RemountSwitch,
   brightness: DafangAccessory.BrightnessSensor,
+  richMotionSensor: DafangAccessory.RichMotionSensor,
 }
 
 var homebridge

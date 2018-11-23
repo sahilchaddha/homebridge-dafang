@@ -25,6 +25,7 @@ const MotionDetectionSwitchAccessory = require('./accessories/motionDetectionSwi
 const RTSPSwitchAccessory = require('./accessories/rtspSwitch')
 const MJPEGSwitchAccessory = require('./accessories/mjpegSwitch')
 const BrightnessAccessory = require('./accessories/brightness')
+const RichMotionSensorAccessory = require('./accessories/richMotionSensor')
 
 // Debug Accessories
 
@@ -54,4 +55,5 @@ module.exports = {
   RestartSwitch: RestartSwitchAccessory,
   RemountSwitch: RemountSwitchAccessory,
   BrightnessSensor: BrightnessAccessory,
+  RichMotionSensor: RichMotionSensorAccessory,
 }

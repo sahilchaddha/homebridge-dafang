@@ -51,6 +51,7 @@ Any other Device with Ingenic T10/T20 Device | ![T20](https://github.com/EliasKo
 | Accessory                          | Type                | Description                                           | Config |
 |------------------------------------|---------------------|-------------------------------------------------------|--------|
 | Motion Sensor                      | `motionSensor`      | Alerts if Motion is Detected                          | `threshold(optional) => In ms.`|
+| Rich Motion Sensor                      | `richMotionSensor`      | Alerts if Motion is Detected (Rich Notifications)                          | `threshold(optional) => In ms.`|
 | Night Vision Sensor                | `nightVisionSensor` | Alerts if Night Mode is Detected                      | `threshold(optional) => In ms.`|
 | Night Vision Switch                | `nightVisionSwitch` | Toggles Night Mode on Camera => IR_LED ON IR_CUT OFF  | None   |
 | Brightness Lux Sensor                | `brightness` | Brightness Lux Sensor  | None   |
@@ -85,6 +86,10 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 ### Simple Demo : 
 
  ![Simple Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo-simple.gif)
+
+### Rich Notifications : 
+
+![Notifications Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo-rich-not.gif)
 
 ## Plugin Config : 
 
