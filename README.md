@@ -131,7 +131,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
                 "accessories": [
                                     {
                                         "name": "Living Room Motion Sensor",
-                                        "type": "motionSensor",
+                                        "type": "richMotionSensor",
                                         "threshold": 300000
                                     },
                                     {
