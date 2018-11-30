@@ -67,11 +67,9 @@ Any other Device with Ingenic T10/T20 Device | ![T20](https://github.com/EliasKo
 | Motion Detection Switch           | `motionDetection`              | Enables/Disable Motion Detection. Turning off this switch will stop sending motion detection alerts.| None|
 | RTSP Server Switch           | `rtspSwitch`              | Debug Switch to turn on/off RTSP H264 Stream Server.| None|
 | MJPEG Server Switch           | `mjpegSwitch`              | Debug Switch to turn on/off MJPEG Server| None|
-| Recalibrate Motor Switch **           | `recalibrateSwitch`              | Debug Switch to Re-Calibrate Camera Motor.| None|
-| Restart Camera Switch **           | `restartSwitch`              | Debug Switch to restart Camera.| None|
-| Re-Mount SD Card RW Switch **           | `remountSwitch`              | Debug Switch to re mount sd card with RW permission. It prevents SD Card Failures like stuck RTSP Stream.| None|
-
-`** => Reinstall Dafang CFW for system switches with https://github.com/sahilchaddha/Xiaomi-Dafang-Hacks/`
+| Recalibrate Motor Switch           | `recalibrateSwitch`              | Debug Switch to Re-Calibrate Camera Motor.| None|
+| Restart Camera Switch           | `restartSwitch`              | Debug Switch to restart Camera.| None|
+| Re-Mount SD Card RW Switch           | `remountSwitch`              | Debug Switch to re mount sd card with RW permission. It prevents SD Card Failures like stuck RTSP Stream.| None|
 
 Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensitive, and it toggles very quickly, to keep the state of sensor more stable little threshold will delay frequent alerts
 
@@ -89,7 +87,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 
 ### Rich Notifications : 
 
-![Notifications Demo](https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo-rich-not.gif)
+<img src="https://raw.githubusercontent.com/sahilchaddha/homebridge-dafang/master/demo-rich-not.gif" width="300" height="600" />
 
 ## Plugin Config : 
 

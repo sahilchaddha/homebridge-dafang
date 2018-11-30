@@ -25,7 +25,7 @@ const RecalibrateSwitch = class extends Accessory {
   switchStateChanged(newState, callback) {
     this.log('Recalibrating Dafang')
     const self = this
-    this.publishToMQTT('/debug/recalibrate/set', 'ON')
+    this.publishToMQTT('/motors/set', 'calibrate')
     self.updateState()
     callback()
   }

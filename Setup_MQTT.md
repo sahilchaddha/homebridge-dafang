@@ -4,8 +4,6 @@
 
 Refer to [Installation](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/blob/master/hacks/install_cfw.md) to install Bootloader + CFW on your respective camera.
 
-Note : To support Debug Switches like reboot,remount sd card, recalibrate, clone firmware from `https://github.com/sahilchaddha/Xiaomi-Dafang-Hacks/`. Refer to [Installation of new firmware](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/blob/master/hacks/install_cfw.md#installation-of-the-new-firmware)
-
 ## MQTT
 
 If everything goes good so far you must be having camera dashboard accessible at `https://CAMERA_IP`.

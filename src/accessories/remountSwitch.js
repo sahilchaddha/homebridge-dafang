@@ -25,7 +25,7 @@ const RemountSwitch = class extends Accessory {
   switchStateChanged(newState, callback) {
     this.log('Remounting SD Card on Dafang')
     const self = this
-    this.publishToMQTT('/debug/remountsdcard/set', 'ON')
+    this.publishToMQTT('/remount_sdcard/set', 'ON')
     self.updateState()
     callback()
   }
