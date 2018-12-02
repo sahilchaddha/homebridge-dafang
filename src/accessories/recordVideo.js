@@ -34,6 +34,8 @@ const RecordVideoSwitch = class extends Accessory {
         folder: this.config.folder,
         name: this.config.cameraName,
         timeLimit: this.config.segmentLength,
+        directoryPathFormat: this.config.recordingDirectoryPathFormat,
+        fileNameFormat: this.config.recordingFilenameFormat,
       })
       // Starts Recording
       this.rec.startRecording()

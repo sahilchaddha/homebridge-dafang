@@ -67,6 +67,9 @@ CameraAccesories.prototype = {
       accessoryConfig.cameraRTSPStreamUrl = this.config.cameraRTSPStreamUrl
       accessoryConfig.checkStorageSizeInterval = this.config.checkStorageSizeInterval
 
+      accessoryConfig.recordingDirectoryPathFormat = this.config.recordingDirectoryPathFormat
+      accessoryConfig.recordingFilenameFormat = this.config.recordingFilenameFormat
+
       if (accessoryConfig.type == null) {
         throw new Error('Each accessory must be configured with a "type". e.g. "switch"')
       }

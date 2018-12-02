@@ -35,6 +35,8 @@ const RecordAudioSwitch = class extends Accessory {
         name: this.config.cameraName,
         timeLimit: this.config.segmentLength,
         type: 'audio',
+        directoryPathFormat: this.config.recordingDirectoryPathFormat,
+        fileNameFormat: this.config.recordingFilenameFormat,
       })
       // Starts Recording
       this.rec.startRecording()

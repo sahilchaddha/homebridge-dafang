@@ -108,6 +108,10 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 | segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos. Default : 60 (1 minute)                      | Optional|
 | maxDirSize                | number | Max Size of folder (in mb) where recordings will be saved. Default : 2048 (2GB)                      | Optional|
 | checkStorageSizeInterval                | number | Time in seconds to re check recording folder size for `storageSensor`. Default : 300 (5 min)                      | Optional|
+| recordingDirectoryPathFormat                | string | DateTime format for Recordings Directory Path. Default : `MMM-Do-YY`                      | Optional|
+| recordingFilenameFormat                | string | DateTime format for Recordings Filename. Default : `YYYY-M-D-h-mm-ss` | Optional|
+
+Refer to https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/ for custom DirectoryPath/FileName formats for recordings..
 
 ```json
 {

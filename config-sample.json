@@ -18,6 +18,8 @@
                 "segmentLength": 60,
                 "maxDirSize": 2048,
                 "checkStorageSizeInterval": 300,
+                "recordingDirectoryPathFormat": "MMM-D-YY",
+                "recordingFilenameFormat": "M_D_YYYY_ h_mm_ss_a",
                 "accessories": [
                                     {
                                         "name": "Living Room Motion Sensor",
@@ -128,6 +130,19 @@
                         "vcodec": "h264",
                         "debug": true
                 }
+            },
+            {
+                "cameraName": "My Entrance Camera",
+                "cameraRTSPStreamUrl": "rtsp://192.168.1.14:8554/unicast",
+                "mqttTopic": "myhome/fang2/#",
+                "folder": "/Users/sahilchaddha/Sahil/Recordings/",
+                "accessories": [
+                                    {
+                                        "name": "Living Room Motion Sensor",
+                                        "type": "richMotionSensor",
+                                        "threshold": 300000
+                                    }
+                    ]
             }]
         }
     ]

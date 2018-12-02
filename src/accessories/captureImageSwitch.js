@@ -32,6 +32,8 @@ const CaptureImageSwitch = class extends Accessory {
       folder: this.config.folder,
       name: this.config.cameraName,
       type: 'image',
+      directoryPathFormat: this.config.recordingDirectoryPathFormat,
+      fileNameFormat: this.config.recordingFilenameFormat,
     })
 
     rec.captureImage(() => {
