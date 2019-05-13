@@ -26,8 +26,6 @@ const MoveCameraSwitch = class extends Accessory {
 
   switchStateChanged(newState, callback) {
     this.log('Moving Camera Motor')
-    // Double event to increase the speed
-    this.publishToMQTT('/motors/' + this.axis + '/set', this.direction)
     this.publishToMQTT('/motors/' + this.axis + '/set', this.direction)
     callback()
     this.updateState()
