@@ -16,13 +16,15 @@ var spawn = require('child_process').spawn;
 
 
 
-function FFMPEG(hap, cameraConfig, log, videoProcessor) {
+function FFMPEG(hap, cameraConfig, log, videoProcessor, mqttService) {
   uuid = hap.UUIDGen;
   Service = hap.Service;
   Characteristic = hap.Characteristic;
   StreamController = hap.StreamController;
   this.log = log;
-
+  this.isMotionOn = false
+  this.threshold = 5000
+  this.cconfig = cameraConfig
   var ffmpegOpt = cameraConfig.videoConfig;
   this.name = cameraConfig.name;
   this.vcodec = ffmpegOpt.vcodec;
@@ -34,7 +36,7 @@ function FFMPEG(hap, cameraConfig, log, videoProcessor) {
   this.maxBitrate = ffmpegOpt.maxBitrate || 300;
   this.debug = ffmpegOpt.debug;
   this.additionalCommandline = ffmpegOpt.additionalCommandline || '-tune zerolatency';
-
+  this.mqttService = mqttService
   if (!ffmpegOpt.source) {
     throw new Error("Missing source for camera.");
   }
@@ -133,9 +135,18 @@ function FFMPEG(hap, cameraConfig, log, videoProcessor) {
     }
   }
 
+  var topic = ''
+  if (this.cconfig.mqttTopic != null) {
+    topic = this.cconfig.mqttTopic.slice(0, this.cconfig.mqttTopic.length - 2)
+  }
+  this.ctopic = topic
   this.createCameraControlService();
   this._createStreamControllers(numberOfStreams, options);
+  this.mqttService.subscribe(topic + '/motion', this.mqttRecieved.bind(this))
 }
+
+
+
 
 FFMPEG.prototype.handleCloseConnection = function(connectionID) {
   this.streamControllers.forEach(function(controller) {
@@ -389,96 +400,56 @@ FFMPEG.prototype.setNightVision = function (newV, callback) {
 
 FFMPEG.prototype.createCameraControlService = function() {
   var controlService = new Service.CameraControl("Camera Control Service");
-  /*
-  controlService
-  .setCharacteristic(Characteristic.NightVision, true)
-  .on('get', (callback) => {
-    console.log("Getting Night Vision")
-    callback(true)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting NightVision " + newV)
-    callback()
-  })
-
-  controlService
-  .setCharacteristic(Characteristic.CurrentHorizontalTiltAngle, 30)
-  .on('get', (callback) => {
-    console.log("Getting CurrentHorizontalTiltAngle")
-    callback(30)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting CurrentHorizontalTiltAngle " + newV)
-    callback()
-  })
-
-  controlService
-  .setCharacteristic(Characteristic.ImageRotation, 30)
-  .on('get', (callback) => {
-    console.log("Getting ImageRotation")
-    callback(30)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting ImageRotation " + newV)
-    callback()
-  })
-
-  controlService
-  .setCharacteristic(Characteristic.ImageMirroring, 30)
-  .on('get', (callback) => {
-    console.log("Getting ImageMirroring")
-    callback(30)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting ImageMirroring " + newV)
-    callback()
-  })
-
-  controlService
-  .setCharacteristic(Characteristic.CurrentVerticalTiltAngle, 50)
-  .on('get', (callback) => {
-    console.log("Getting CurrentVerticalTiltAngle")
-    callback(50)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting CurrentVerticalTiltAngle " + newV)
-    callback()
-  })
-
-
-  controlService
-  .setCharacteristic(Characteristic.TargetHorizontalTiltAngle, 30)
-  .on('get', (callback) => {
-    console.log("Getting TargetHorizontalTiltAngle")
-    callback(30)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting TargetHorizontalTiltAngle " + newV)
-    callback()
-  })
-
-
-  controlService
-  .setCharacteristic(Characteristic.TargetVerticalTiltAngle, 50)
-  .on('get', (callback) => {
-    console.log("Getting TargetVerticalTiltAngle")
-    callback(50)
-  })
-  .on('set', (newV, callback) => {
-    console.log("Setting TargetVerticalTiltAngle " + newV)
-    callback()
-  })
-*/
-
   var microphoneService = new Service.Microphone("Microphone Service");
   this.services.push(microphoneService);
   var soundService = new Service.Speaker("Sound Service");
   this.services.push(soundService);
   this.services.push(controlService)
+  var motion = new Service.MotionSensor('Motion Service' + this.ctopic);
+  motion
+  .getCharacteristic(Characteristic.MotionDetected)
+      .on('get', this.getState.bind(this))
+  this.services.push(motion)
+}
+
+FFMPEG.prototype.mqttRecieved = function(res) {
+  if (res.payload === 'ON') {
+    if (this.timer != null) {
+      clearTimeout(this.timer)
+    }
+    this.updateState(true)
+  } else if (res.payload === 'OFF') {
+    if (this.threshold != null) {
+      this.timer = setTimeout(() => {
+        this.updateState(false)
+      }, this.threshold)
+    } else {
+      this.updateState(false)
+    }
+  }
+}
+
+FFMPEG.prototype.updateState = function(newValue) {
+  if (newValue !== this.isMotionOn) {
+    this.log('DAFANG : Setting Rich Motion Sensor Value to ' + newValue)
+  }
+  this.isMotionOn = newValue
+  const res = this.isMotionOn
+  this.services.forEach(service => {
+      if (service.displayName === 'Motion Service' + this.ctopic) {
+        service
+        .getCharacteristic(Characteristic.MotionDetected)
+        .updateValue(res)
+      }
+  });
+}
+
+
+FFMPEG.prototype.getState = function(callback) {
+  callback(null, this.isMotionOn)
 }
 
 FFMPEG.prototype.getServices = function() {
-  console.log(" RETURNING SERVICESSSS")
   return this.services
 }
 
