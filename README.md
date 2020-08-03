@@ -16,6 +16,10 @@ Homebridge Plugin for Xiaomi Dafang / Wyze Camera
 ```
     $ brew install ffmpeg --with-openh264 --with-fdk-aac
 ```
+   Note: for installations on Raspberry Pi's use
+```
+    sudo apt install ffmpeg -y
+```
 
 2. Install the plugin using:
 
