@@ -102,7 +102,7 @@ Threshold => Lesser Threshold, More Accuracy. Dafang Motion detection is sensiti
 | Config                          | Type                | Description                                           | Config |
 |------------------------------------|---------------------|-------------------------------------------------------|--------|
 | cameraRTSPStreamUrl                      | string      | RTSP Stream Url e.g. `rtsp://192.168.1.2:8554/unicast`                          | Required|
-| disableStream                | bool | Set true to stream camera, set false to disable camera view                      | Optional|
+| disableStream                | bool | Set false to stream camera, set true to disable camera view                      | Optional|
 | mqttTopic                | string | Each Dafang Device must have a unique topic. Topic should match for each corresponding camera accessory                      | Required|
 | folder                | string | Absolute path of directory where recordings/images will be saved                      | Required|
 | segmentLength                | number | Length of each video file. (in seconds). Each recording will be saved in segmented videos. Default : 60 (1 minute)                      | Optional|
